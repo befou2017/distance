@@ -20,6 +20,13 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->db->select('titre, orga, date')->from('event');
+		$query = $this->db->get();
+		$data = array();
+		foreach ($query->result() as $row){
+			echo $row->title;
+		  }
+
 		$this->load->view('welcome_message');
 	}
 }
